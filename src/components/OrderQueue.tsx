@@ -138,6 +138,7 @@ export default function () {
                   // title="starts a new WYROBY ZE ZWYKŁĄ FLANGĄ 1 block (0 min changeover)"
                   on:dragover={(evt) => {
                     evt.preventDefault();
+                    console.log("hello", idx())
                     setDragOverIndex(idx());
                   }}
                   on:dragleave={() => {
@@ -146,7 +147,6 @@ export default function () {
                   on:drop={(evt: any) => {
                     evt.preventDefault();
 
-                    evt.preventDefault();
                     const dragFromIndexValue = dragFromIndex();
                     if (
                       dragFromIndexValue === null ||
@@ -183,11 +183,13 @@ export default function () {
                     setDragFromIndex(idx());
                     if (evt.dataTransfer) {
                       evt.dataTransfer.effectAllowed = "move";
-                      try {
+
                         evt.dataTransfer.setData("text/plain", String(idx()));
-                      } catch {
-                        /* older engines */
-                      }
+                      // try {
+                      // } catch {
+                      //   /* older engines */
+                      // }
+                      // console.log(event.dataTransfer.getData("text/plain"))
                     }
                   }}
                 >

@@ -49,7 +49,7 @@ export function parseTimeToMinutes(value: Date | string | number) {
   const m = String(value)
     .trim()
     .match(/^(\d{1,2})[:.](\d{2})(?::(\d{2}))?$/);
-  if (!m) throw Error("Invalid date format. String date should be HH:MM");
+  if (!m) throw Error("Invalid date format. String date should be HH:MM. Recieved: " + value);
   const h = +m[1],
     min = +m[2];
   if (h > 24 || min > 59)

@@ -78,18 +78,18 @@ function applyParsed(
 export default function () {
   const { state, setState } = useMainStore();
 
-  onMount(async () => {
-    const filePath = "/home/p/Downloads/CS-plan-20260915-1522.xlsx";
-    const handle = await fsOpen(filePath, { read: true });
+  // onMount(async () => {
+  //   const filePath = "/home/p/Downloads/CS-plan-20260915-1522.xlsx";
+  //   const handle = await fsOpen(filePath, { read: true });
 
-    const stat = await handle.stat();
-    const buf = new Uint8Array(stat.size);
-    await handle.read(buf);
+  //   const stat = await handle.stat();
+  //   const buf = new Uint8Array(stat.size);
+  //   await handle.read(buf);
 
-    const parsed = parseWorkbookFromBuffer(buf);
+  //   const parsed = parseWorkbookFromBuffer(buf);
 
-    applyParsed(setState, parsed, basename(filePath));
-  });
+  //   applyParsed(setState, parsed, basename(filePath));
+  // });
 
   async function openWorkbook() {
     const filePath = await open({

@@ -39,7 +39,7 @@ function num(v) {
 function sheetRows(wb, name) {
   const ws = wb.Sheets[name];
   if (!ws) return [];
-  return lib.utils.sheet_to_json(ws, { header: 1, raw: true, defval: null });
+  return lib.utils.sheet_to_json(ws, { header: 1, raw: true, defval: null, blankrows: false});
 }
 
 function isBlankRow(r) {
@@ -392,6 +392,7 @@ function readTimesSheet(wb, nameRe, fallbackName) {
   const out = [];
   for (let i = headerIdx + 1; i < rows.length; i++) {
     const row = rows[i] || [];
+    console.log(row)
     const s = parseTimeToMinutes(row[sCol] ?? row[0]);
     const e = parseTimeToMinutes(eCol >= 0 ? row[eCol] : row[1]);
     if (s == null || e == null) continue;
